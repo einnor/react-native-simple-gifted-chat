@@ -55,7 +55,7 @@ export default class App extends Component {
       <GiftedChat
         messages={this.state.messages}
         onSend={this.onSend}
-        user={user}
+        user={{ _id: this.state.userId }}
       />
     );
   }

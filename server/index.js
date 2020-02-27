@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var socketio = require('socket.io');
 var mongojs = require('mongojs');
+require('dotenv').config();
 
 var ObjectID = mongojs.ObjectID;
 var db = mongojs(process.env.MONGO_URL || 'mongodb://localhost:27017/local');
