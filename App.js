@@ -42,35 +42,21 @@ export default class App extends Component {
   onReceiveMessage = (messages) => {
     this._storeMessages(messages);
   };
-  onSend = () => {};
-  _storeMessages = () => {};
+  onSend = (messages = []) => {
+    this.socket.emit('message', messages[0]);
+    this._storeMessages(messages);
+  };
+  _storeMessages = (messages) => {
+    this.setState((prev) => ({ messages: GiftedChat.append(prev.messages, messages) }));
+  };
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <GiftedChat
+        messages={this.state.messages}
+        onSend={this.onSend}
+        user={user}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
