@@ -39,7 +39,9 @@ export default class App extends Component {
         }
       }).catch((err) => console.log(err));
   };
-  onReceiveMessage = () => {};
+  onReceiveMessage = (messages) => {
+    this._storeMessages(messages);
+  };
   onSend = () => {};
   _storeMessages = () => {};
 
