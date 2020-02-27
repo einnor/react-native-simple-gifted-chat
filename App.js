@@ -56,6 +56,7 @@ export default class App extends Component {
         messages={this.state.messages}
         onSend={this.onSend}
         user={{ _id: this.state.userId }}
+        showUserAvatar={true}
       />
     );
   }

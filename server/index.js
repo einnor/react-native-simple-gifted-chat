@@ -55,7 +55,8 @@ function _sendExistingMessages (socket) {
     .sort({ createdAt: 1 })
     .toArray((err, messages) => {
       if (!messages.length) return;
-      socket.emit('messages', messages.reverse());
+      console.log(messages);
+      socket.emit('message', messages.reverse());
     });
 }
 
