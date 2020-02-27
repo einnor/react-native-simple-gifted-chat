@@ -43,7 +43,7 @@ function onUserJoined (userId, socket) {
 }
 
 function onMessageReceived (message, senderSocket) {
-  var userid = users[senderSocket.id];
+  var userId = users[senderSocket.id];
   if (!userId) return;
 
   _sendExistingMessage(message, senderSocket);
